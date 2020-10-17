@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VesselManager.Domain.Entities;
+using VesselManager.Infra.Mapping;
 
 namespace VesselManager.Infra.Context
 {
@@ -16,6 +17,9 @@ namespace VesselManager.Infra.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Vessel>(new VesselMap().Configure);
+            modelBuilder.Entity<Equipament>(new EquipamentMap().Configure);
         }
     }
 }
