@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesselManager.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesselManager.Domain", "VesselManager.Domain\VesselManager.Domain.csproj", "{CB6C6296-DD7F-4ECF-A2BF-61F04FD1B473}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VesselManager.Infra", "VesselManager.Infra\VesselManager.Infra.csproj", "{999AD99A-0F4F-479D-B819-59FB26FCB9A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{CB6C6296-DD7F-4ECF-A2BF-61F04FD1B473}.Release|x64.Build.0 = Release|Any CPU
 		{CB6C6296-DD7F-4ECF-A2BF-61F04FD1B473}.Release|x86.ActiveCfg = Release|Any CPU
 		{CB6C6296-DD7F-4ECF-A2BF-61F04FD1B473}.Release|x86.Build.0 = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|x64.Build.0 = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Debug|x86.Build.0 = Debug|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|x64.ActiveCfg = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|x64.Build.0 = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{999AD99A-0F4F-479D-B819-59FB26FCB9A8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,0 @@
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\bin\Debug\netcoreapp3.1\VesselManager.Domain.deps.json
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\bin\Debug\netcoreapp3.1\VesselManager.Domain.dll
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\bin\Debug\netcoreapp3.1\VesselManager.Domain.pdb
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.csprojAssemblyReference.cache
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.AssemblyInfoInputs.cache
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.AssemblyInfo.cs
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.csproj.CoreCompileInputs.cache
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.dll
-D:\Documentos\Douglas\MODEC\vesselmanager\src\VesselManager.Domain\obj\Debug\netcoreapp3.1\VesselManager.Domain.pdb
