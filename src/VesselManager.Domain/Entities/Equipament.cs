@@ -5,5 +5,6 @@ namespace VesselManager.Domain.Entities
         public bool status { get; set; }
         public string name { get; set; }
         public string location { get; set; }
+        public Vessel vessel { get; set; }
     }
 }

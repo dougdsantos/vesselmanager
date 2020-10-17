@@ -9,7 +9,7 @@ namespace VesselManager.Infra.Context
         {
             var connectionString = "Data Source=.\\SQLEXPRESS2017;Initial Catalog=vesselDb;Integrated Security=True;";
             var optionsBuilder = new DbContextOptionsBuilder<BdContext>();
-            optionsBuilder.UseSqlite(connectionString);
+            optionsBuilder.UseSqlServer(connectionString);
             return new BdContext(optionsBuilder.Options);
         }
     }

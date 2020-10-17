@@ -10,13 +10,14 @@ namespace VesselManager.Infra.Mapping
         {
             builder.ToTable("Vessels");
 
-            builder.HasKey(v => v.Id);
-
             builder.HasIndex(v => v.code)
                    .IsUnique();
 
             builder.HasMany(v => v.equipaments)
-                .WithOne();
+                .WithOne(e => e.vessel);
+
+            builder.Property(v => v.code)
+                   .IsRequired();
         }
     }
 }
