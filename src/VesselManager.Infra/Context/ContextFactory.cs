@@ -7,7 +7,7 @@ namespace VesselManager.Infra.Context
     {
         public BdContext CreateDbContext(string[] args)
         {
-            var connectionString = "Data Source=:memory:;Version=3;New=True;";
+            var connectionString = "Data Source=.\\SQLEXPRESS2017;Initial Catalog=vesselDb;Integrated Security=True;";
             var optionsBuilder = new DbContextOptionsBuilder<BdContext>();
             optionsBuilder.UseSqlite(connectionString);
             return new BdContext(optionsBuilder.Options);
