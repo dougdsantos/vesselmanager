@@ -6,5 +6,6 @@ namespace VesselManager.Domain.Interfaces
     public interface IRepository<T> where T : Base
     {
         Task<T> InsertAsync(T item);
+        Task<T> GetFromCode(string code);
     }
 }

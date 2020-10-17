@@ -17,6 +17,19 @@ namespace VesselManager.Infra.Repository
             _dataset = _context.Set<T>();
         }
 
+        public async Task<T> GetFromCode(string code)
+        {
+            try
+            {
+                return await _dataset.SingleOrDefaultAsync(i => i.code == code);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<T> InsertAsync(T item)
         {
             try
