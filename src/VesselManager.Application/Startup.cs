@@ -5,10 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using VesselManager.Domain.Interfaces;
+using VesselManager.Domain.Interfaces.Services;
+using VesselManager.Infra.Context;
+using VesselManager.Infra.Repository;
+using VesselManager.Service.Services;
 
 namespace VesselManager.Application
 {
@@ -24,7 +30,14 @@ namespace VesselManager.Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BdContext>(
+                options => options.UseSqlServer("Data Source=.\\SQLEXPRESS2017;Initial Catalog=vesselDb;Integrated Security=True;")
+            );
+            services.AddScoped<IVesselService, VesselService>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddControllers();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +48,12 @@ namespace VesselManager.Application
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Vessel Manager by Douglas dos Santos");
+                c.RoutePrefix = string.Empty;
+            });
             app.UseRouting();
 
             app.UseAuthorization();
