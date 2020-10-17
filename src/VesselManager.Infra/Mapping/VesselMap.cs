@@ -13,9 +13,6 @@ namespace VesselManager.Infra.Mapping
             builder.HasIndex(v => v.code)
                    .IsUnique();
 
-            builder.HasMany(v => v.equipaments)
-                .WithOne(e => e.vessel);
-
             builder.Property(v => v.code)
                    .IsRequired();
         }

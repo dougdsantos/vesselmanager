@@ -12,6 +12,9 @@ namespace VesselManager.Infra.Mapping
 
             builder.HasKey(e => e.Id);
 
+            builder.HasOne(e => e.vessel)
+            .WithMany();
+
             builder.Property(e => e.code)
             .IsRequired();
 

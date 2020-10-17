@@ -28,5 +28,19 @@ namespace VesselManager.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("{code}", Name = "InsertEquipamentWithCodeVessel")]
+        public async Task<ActionResult> InsertEquipament(string code, [FromBody] Equipament body, [FromServices] IEquipamentService equipamentService)
+        {
+            var vessel = new Vessel()
+            {
+                code = code
+            };
+            body.vessel = vessel;
+            var equipament = await equipamentService.InsertEquipament(body);
+
+            return Ok(equipament);
+        }
     }
 }
