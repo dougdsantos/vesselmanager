@@ -61,7 +61,12 @@ namespace VesselManager.Application.Controllers
         {
             var equipaments = await equipamentService.DesactiveEquipaments(vessel, body);
 
-            return Ok();
+            if (equipaments.status == "Error")
+            {
+                return BadRequest(equipaments);
+            }
+
+            return Ok(equipaments);
         }
     }
 }

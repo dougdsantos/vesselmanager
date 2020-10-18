@@ -39,6 +39,10 @@ namespace VesselManager.Service.Services
             var itens = equipamentsInVessel.Where(c => equipaments.Any(u => u.code == c.code)).ToList();
             itens = itens.Select(c => { c.status = false; return c; }).ToList();
             var rs = await _equipamentRepository.Update(vesselCode, itens);
+
+            result.status = "Ok";
+            result.message = "Vessel updated.";
+            result.equipaments = (from e in rs select e.code).ToList();
             return result;
         }
 
