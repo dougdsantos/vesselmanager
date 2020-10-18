@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using VesselManager.Domain.Entities;
 using VesselManager.Domain.Interfaces;
 using VesselManager.Infra.Context;
+using System.Linq;
 
 namespace VesselManager.Infra.Repository
 {
@@ -19,6 +20,12 @@ namespace VesselManager.Infra.Repository
             _dataset.Add(equipament);
             await _context.SaveChangesAsync();
             return equipament;
+        }
+
+        public async Task<bool> SearchForVessel(Equipament equipament)
+        {
+            var result = await _dataset.FirstOrDefaultAsync(e => e.code == equipament.code);
+            return result == null;
         }
     }
 }

@@ -21,8 +21,14 @@ namespace VesselManager.Service.Services
         {
             var vessel = await _vesselRepository.GetFromCode(equipament.vessel.code);
             equipament.vessel = vessel;
+            equipament.status = true;
 
-            return await _equipamentRepository.InsertEquipamentAsync(equipament);
+            if (await _equipamentRepository.SearchForVessel(equipament))
+            {
+                return await _equipamentRepository.InsertEquipamentAsync(equipament);
+            }
+
+            return null;
         }
     }
 }

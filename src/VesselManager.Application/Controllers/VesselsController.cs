@@ -30,15 +30,20 @@ namespace VesselManager.Application.Controllers
         }
 
         [HttpPost]
-        [Route("{code}", Name = "InsertEquipamentWithCodeVessel")]
+        [Route("{code}/equipaments", Name = "InsertEquipamentWithCodeVessel")]
         public async Task<ActionResult> InsertEquipament(string code, [FromBody] Equipament body, [FromServices] IEquipamentService equipamentService)
         {
             var vessel = new Vessel()
             {
-                code = code
+                code = code.ToUpper()
             };
             body.vessel = vessel;
             var equipament = await equipamentService.InsertEquipament(body);
+
+            if (equipament == null)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, "Equipment already registered.");
+            }
 
             return Ok(equipament);
         }

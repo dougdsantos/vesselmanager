@@ -6,5 +6,6 @@ namespace VesselManager.Domain.Interfaces
     public interface IEquipamentRepository : IRepository<Equipament>
     {
         Task<Equipament> InsertEquipamentAsync(Equipament equipament);
+        Task<bool> SearchForVessel(Equipament equipament);
     }
 }

@@ -20,6 +20,7 @@ namespace VesselManager.Service.Services
 
         public async Task<Vessel> Insert(Vessel vessel)
         {
+            vessel.code = vessel.code.ToUpper();
             return await _repository.InsertAsync(vessel);
         }
     }
