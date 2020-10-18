@@ -54,5 +54,14 @@ namespace VesselManager.Application.Controllers
 
             return Ok(equipament);
         }
+
+        [HttpPut]
+        [Route("{vessel}/equipaments", Name = "UpdateEquipamentsWithVessel")]
+        public async Task<ActionResult> UpdateStatus(string vessel, [FromBody] List<Equipament> body, [FromServices] IEquipamentService equipamentService)
+        {
+            var equipaments = await equipamentService.DesactiveEquipaments(vessel, body);
+
+            return Ok();
+        }
     }
 }

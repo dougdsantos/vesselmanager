@@ -20,7 +20,9 @@ namespace VesselManager.Infra.Repository
 
         public async Task<List<Equipament>> GetEquipamentsByVesselCode(string code)
         {
-            var equipaments = await _dataset.Where(e => e.vessel.code == code).ToListAsync();
+            var equipaments = await _dataset.Where(e => e.vessel.code == code)
+            .Include(e => e.vessel)
+            .ToListAsync();
             return equipaments;
         }
 
@@ -56,6 +58,16 @@ namespace VesselManager.Infra.Repository
             e.vessel.code == equipament.vessel.code);
 
             return result == null;
+        }
+
+        public async Task<List<Equipament>> Update(string vessel, List<Equipament> equipament)
+        {
+            foreach (var item in equipament)
+            {
+                _context.Entry(item).CurrentValues.SetValues(item);
+            }
+            await _context.SaveChangesAsync();
+            return equipament;
         }
     }
 }
