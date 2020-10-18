@@ -10,7 +10,7 @@ using VesselManager.Infra.Context;
 namespace VesselManager.Infra.Migrations
 {
     [DbContext(typeof(BdContext))]
-    [Migration("20201018233558_AddingTables")]
+    [Migration("20201018234951_AddingTables")]
     partial class AddingTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
