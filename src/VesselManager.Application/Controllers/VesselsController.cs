@@ -33,12 +33,7 @@ namespace VesselManager.Application.Controllers
         [Route("{code}/equipaments", Name = "InsertEquipamentWithCodeVessel")]
         public async Task<ActionResult> InsertEquipament(string code, [FromBody] Equipament body, [FromServices] IEquipamentService equipamentService)
         {
-            var vessel = new Vessel()
-            {
-                code = code.ToUpper()
-            };
-            body.vessel = vessel;
-            var equipament = await equipamentService.InsertEquipament(body);
+            var equipament = await equipamentService.InsertEquipament(code, body);
 
             if (equipament == null)
             {

@@ -7,15 +7,15 @@ namespace VesselManager.Service.Services
 {
     public class VesselService : IVesselService
     {
-        private IRepository<Vessel> _repository;
+        private IVesselRepository _repository;
 
-        public VesselService(IRepository<Vessel> repository)
+        public VesselService(IVesselRepository repository)
         {
             _repository = repository;
         }
         public async Task<Vessel> Get(string code)
         {
-            return await _repository.GetFromCode(code);
+            return await _repository.GetVesselByCode(code);
         }
 
         public async Task<Vessel> Insert(Vessel vessel)

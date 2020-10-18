@@ -3,8 +3,8 @@ using VesselManager.Domain.Entities;
 
 namespace VesselManager.Domain.Interfaces
 {
-    public interface IRepository<T> where T : Base
+    public interface IVesselRepository : IRepository<Vessel>
     {
-        Task<T> InsertAsync(T item);
+        Task<Vessel> GetVesselByCode(string code);
     }
 }

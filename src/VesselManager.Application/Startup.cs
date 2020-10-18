@@ -36,7 +36,7 @@ namespace VesselManager.Application
             services.AddScoped<IVesselService, VesselService>();
             services.AddScoped<IEquipamentService, EquipamentService>();
             services.AddScoped<IEquipamentRepository, EquipamentRepository>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IVesselRepository, VesselRepository>();
             services.AddControllers();
 
             services.AddSwaggerGen();

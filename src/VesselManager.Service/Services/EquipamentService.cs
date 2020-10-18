@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using VesselManager.Domain.Entities;
 using VesselManager.Domain.Interfaces;
@@ -7,20 +8,21 @@ namespace VesselManager.Service.Services
 {
     public class EquipamentService : IEquipamentService
     {
-        private IRepository<Vessel> _vesselRepository;
+        private IVesselRepository _vesselRepository;
         private IEquipamentRepository _equipamentRepository;
 
         public EquipamentService(
-            IRepository<Vessel> vesselRepository,
+            IVesselRepository vesselRepository,
             IEquipamentRepository equipamentRepository)
         {
             _vesselRepository = vesselRepository;
             _equipamentRepository = equipamentRepository;
         }
-        public async Task<Equipament> InsertEquipament(Equipament equipament)
+        public async Task<Equipament> InsertEquipament(string vesselCode, Equipament equipament)
         {
-            var vessel = await _vesselRepository.GetFromCode(equipament.vessel.code);
+            var vessel = await _vesselRepository.GetVesselByCode(vesselCode);
             equipament.vessel = vessel;
+
             equipament.status = true;
 
             if (await _equipamentRepository.SearchForVessel(equipament))

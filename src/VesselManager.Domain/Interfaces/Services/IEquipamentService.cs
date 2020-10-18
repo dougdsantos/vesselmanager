@@ -5,6 +5,6 @@ namespace VesselManager.Domain.Interfaces.Services
 {
     public interface IEquipamentService
     {
-        Task<Equipament> InsertEquipament(Equipament equipament);
+        Task<Equipament> InsertEquipament(string vesselCode, Equipament equipament);
     }
 }
