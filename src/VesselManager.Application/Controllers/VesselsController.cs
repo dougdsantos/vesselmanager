@@ -32,9 +32,9 @@ namespace VesselManager.Application.Controllers
         {
             var equipament = await equipamentService.InsertEquipament(code, body);
 
-            if (equipament == null)
+            if (equipament.status == "Error")
             {
-                return StatusCode((int)HttpStatusCode.BadRequest, "Equipment already registered.");
+                return BadRequest(equipament);
             }
 
             return Ok(equipament);
