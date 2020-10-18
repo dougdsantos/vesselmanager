@@ -28,9 +28,10 @@ namespace VesselManager.Infra.Repository
                     await _context.SaveChangesAsync();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                item.Id = Guid.Empty;
+                return null;
             }
 
             return item;

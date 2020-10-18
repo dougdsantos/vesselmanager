@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VesselManager.Domain.Entities;
 
@@ -7,5 +8,6 @@ namespace VesselManager.Domain.Interfaces
     {
         Task<Equipament> InsertEquipamentAsync(Equipament equipament);
         Task<bool> SearchForVessel(Equipament equipament);
+        Task<List<Equipament>> InsertEquipamentAsync(List<Equipament> equipament);
     }
 }

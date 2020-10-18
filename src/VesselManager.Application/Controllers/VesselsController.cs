@@ -18,15 +18,12 @@ namespace VesselManager.Application.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            try
+            var vessel = await vesselService.Insert(body);
+            if (vessel.status == "Error")
             {
-                return Ok(await vesselService.Insert(body));
+                return BadRequest(vessel);
             }
-            catch (ArgumentException ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-            }
+            return Ok(vessel);
         }
 
         [HttpPost]

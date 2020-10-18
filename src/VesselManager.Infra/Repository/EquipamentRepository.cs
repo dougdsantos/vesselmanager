@@ -4,6 +4,7 @@ using VesselManager.Domain.Entities;
 using VesselManager.Domain.Interfaces;
 using VesselManager.Infra.Context;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace VesselManager.Infra.Repository
 {
@@ -22,9 +23,17 @@ namespace VesselManager.Infra.Repository
             return equipament;
         }
 
+        public Task<List<Equipament>> InsertEquipamentAsync(List<Equipament> equipament)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<bool> SearchForVessel(Equipament equipament)
         {
-            var result = await _dataset.FirstOrDefaultAsync(e => e.code == equipament.code);
+            var result = await _dataset.FirstOrDefaultAsync(e =>
+            e.code == equipament.code &&
+            e.vessel.code == equipament.vessel.code);
+
             return result == null;
         }
     }
