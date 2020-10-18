@@ -1,6 +1,6 @@
 namespace VesselManager.Domain.Entities
 {
-    public class Equipament : Base
+    public class Equipment : Base
     {
         public bool status { get; set; }
         public string name { get; set; }

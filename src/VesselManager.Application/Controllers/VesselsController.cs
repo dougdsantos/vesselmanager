@@ -28,45 +28,45 @@ namespace VesselManager.Application.Controllers
         }
 
         [HttpPost]
-        [Route("{code}/equipaments", Name = "InsertEquipamentWithCodeVessel")]
-        public async Task<ActionResult> InsertEquipament(string code, [FromBody] Equipament body, [FromServices] IEquipamentService equipamentService)
+        [Route("{code}/equipments", Name = "InsertEquipmentWithCodeVessel")]
+        public async Task<ActionResult> Insertequipment(string code, [FromBody] Equipment body, [FromServices] IEquipmentService equipmentService)
         {
-            var equipament = await equipamentService.InsertEquipament(code, body);
+            var equipment = await equipmentService.InsertEquipment(code, body);
 
-            if (equipament.status == "Error")
+            if (equipment.status == "Error")
             {
-                return BadRequest(equipament);
+                return BadRequest(equipment);
             }
 
-            return Ok(equipament);
+            return Ok(equipment);
         }
 
         [HttpGet]
-        [Route("{vesselCode}/equipaments", Name = "GetEquipamentsWithVessel")]
-        public async Task<ActionResult> GetEquipament(string vesselCode, [FromServices] IEquipamentService equipamentService)
+        [Route("{vesselCode}/equipments", Name = "GetEquipmentsWithVessel")]
+        public async Task<ActionResult> Getequipment(string vesselCode, [FromServices] IEquipmentService equipmentService)
         {
-            var equipament = await equipamentService.GetAllActiveEquipamentsByVessel(vesselCode);
+            var equipment = await equipmentService.GetAllActiveEquipmentsByVessel(vesselCode);
 
-            if (equipament == null)
+            if (equipment == null)
             {
-                return BadRequest("Vessel don't have active equipaments");
+                return BadRequest("Vessel don't have active equipments");
             }
 
-            return Ok(equipament);
+            return Ok(equipment);
         }
 
         [HttpPut]
-        [Route("{vessel}/equipaments", Name = "UpdateEquipamentsWithVessel")]
-        public async Task<ActionResult> UpdateStatus(string vessel, [FromBody] List<Equipament> body, [FromServices] IEquipamentService equipamentService)
+        [Route("{vessel}/equipments", Name = "UpdateEquipmentsWithVessel")]
+        public async Task<ActionResult> UpdateStatus(string vessel, [FromBody] List<Equipment> body, [FromServices] IEquipmentService equipmentService)
         {
-            var equipaments = await equipamentService.DesactiveEquipaments(vessel, body);
+            var equipments = await equipmentService.DesactiveEquipments(vessel, body);
 
-            if (equipaments.status == "Error")
+            if (equipments.status == "Error")
             {
-                return BadRequest(equipaments);
+                return BadRequest(equipments);
             }
 
-            return Ok(equipaments);
+            return Ok(equipments);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace VesselManager.Infra.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0-rc.2.20475.6");
 
-            modelBuilder.Entity("VesselManager.Domain.Entities.Equipament", b =>
+            modelBuilder.Entity("VesselManager.Domain.Entities.Equipment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace VesselManager.Infra.Migrations
 
                     b.HasIndex("vesselId");
 
-                    b.ToTable("Equipaments");
+                    b.ToTable("Equipments");
                 });
 
             modelBuilder.Entity("VesselManager.Domain.Entities.Vessel", b =>
@@ -68,7 +68,7 @@ namespace VesselManager.Infra.Migrations
                     b.ToTable("Vessels");
                 });
 
-            modelBuilder.Entity("VesselManager.Domain.Entities.Equipament", b =>
+            modelBuilder.Entity("VesselManager.Domain.Entities.Equipment", b =>
                 {
                     b.HasOne("VesselManager.Domain.Entities.Vessel", "vessel")
                         .WithMany()

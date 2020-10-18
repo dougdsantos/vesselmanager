@@ -4,11 +4,11 @@ using VesselManager.Domain.Entities;
 
 namespace VesselManager.Infra.Mapping
 {
-    public class EquipamentMap : IEntityTypeConfiguration<Equipament>
+    public class EquipmentMap : IEntityTypeConfiguration<Equipment>
     {
-        public void Configure(EntityTypeBuilder<Equipament> builder)
+        public void Configure(EntityTypeBuilder<Equipment> builder)
         {
-            builder.ToTable("Equipaments");
+            builder.ToTable("Equipments");
 
             builder.HasKey(e => e.Id);
 

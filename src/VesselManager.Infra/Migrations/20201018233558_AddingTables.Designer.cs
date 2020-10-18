@@ -10,8 +10,8 @@ using VesselManager.Infra.Context;
 namespace VesselManager.Infra.Migrations
 {
     [DbContext(typeof(BdContext))]
-    [Migration("20201017120934_UpdatingFK")]
-    partial class UpdatingFK
+    [Migration("20201018233558_AddingTables")]
+    partial class AddingTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace VesselManager.Infra.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0-rc.2.20475.6");
 
-            modelBuilder.Entity("VesselManager.Domain.Entities.Equipament", b =>
+            modelBuilder.Entity("VesselManager.Domain.Entities.Equipment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace VesselManager.Infra.Migrations
 
                     b.HasIndex("vesselId");
 
-                    b.ToTable("Equipaments");
+                    b.ToTable("Equipments");
                 });
 
             modelBuilder.Entity("VesselManager.Domain.Entities.Vessel", b =>
@@ -70,18 +70,13 @@ namespace VesselManager.Infra.Migrations
                     b.ToTable("Vessels");
                 });
 
-            modelBuilder.Entity("VesselManager.Domain.Entities.Equipament", b =>
+            modelBuilder.Entity("VesselManager.Domain.Entities.Equipment", b =>
                 {
                     b.HasOne("VesselManager.Domain.Entities.Vessel", "vessel")
-                        .WithMany("equipaments")
+                        .WithMany()
                         .HasForeignKey("vesselId");
 
                     b.Navigation("vessel");
-                });
-
-            modelBuilder.Entity("VesselManager.Domain.Entities.Vessel", b =>
-                {
-                    b.Navigation("equipaments");
                 });
 #pragma warning restore 612, 618
         }

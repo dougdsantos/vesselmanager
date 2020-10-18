@@ -7,7 +7,7 @@ namespace VesselManager.Infra.Context
     public class BdContext : DbContext
     {
         public DbSet<Vessel> vessels { get; set; }
-        public DbSet<Equipament> equipaments { get; set; }
+        public DbSet<Equipment> equipaments { get; set; }
 
         public BdContext(DbContextOptions<BdContext> options) : base(options)
         {
@@ -19,7 +19,7 @@ namespace VesselManager.Infra.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Vessel>(new VesselMap().Configure);
-            modelBuilder.Entity<Equipament>(new EquipamentMap().Configure);
+            modelBuilder.Entity<Equipment>(new EquipmentMap().Configure);
         }
     }
 }

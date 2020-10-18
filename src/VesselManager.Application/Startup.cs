@@ -34,8 +34,8 @@ namespace VesselManager.Application
                 options => options.UseSqlServer("Data Source=.\\SQLEXPRESS2017;Initial Catalog=vesselDb;Integrated Security=True;")
             );
             services.AddScoped<IVesselService, VesselService>();
-            services.AddScoped<IEquipamentService, EquipamentService>();
-            services.AddScoped<IEquipamentRepository, EquipamentRepository>();
+            services.AddScoped<IEquipmentService, EquipmentService>();
+            services.AddScoped<IEquipmentRepository, EquipmentRepository>();
             services.AddScoped<IVesselRepository, VesselRepository>();
             services.AddControllers();
 

@@ -9,16 +9,16 @@ using System;
 
 namespace VesselManager.Infra.Repository
 {
-    public class EquipamentRepository : Repository<Equipament>, IEquipamentRepository
+    public class EquipmentRepository : Repository<Equipment>, IEquipmentRepository
     {
-        private DbSet<Equipament> _dataset;
+        private DbSet<Equipment> _dataset;
 
-        public EquipamentRepository(BdContext context) : base(context)
+        public EquipmentRepository(BdContext context) : base(context)
         {
-            _dataset = context.Set<Equipament>();
+            _dataset = context.Set<Equipment>();
         }
 
-        public async Task<List<Equipament>> GetEquipamentsByVesselCode(string code)
+        public async Task<List<Equipment>> GetEquipmentsByVesselCode(string code)
         {
             var equipaments = await _dataset.Where(e => e.vessel.code == code)
             .Include(e => e.vessel)
@@ -26,18 +26,18 @@ namespace VesselManager.Infra.Repository
             return equipaments;
         }
 
-        public async Task<Equipament> InsertEquipamentAsync(Equipament equipament)
+        public async Task<Equipment> InsertEquipmentAsync(Equipment equipment)
         {
-            _dataset.Add(equipament);
+            _dataset.Add(equipment);
             await _context.SaveChangesAsync();
-            return equipament;
+            return equipment;
         }
 
-        public async Task<List<Equipament>> InsertEquipamentAsync(List<Equipament> equipament)
+        public async Task<List<Equipment>> InsertEquipmentAsync(List<Equipment> equipment)
         {
-            var equipaments = (
-                from e in equipament
-                select new Equipament()
+            var equipments = (
+                from e in equipment
+                select new Equipment()
                 {
                     Id = Guid.NewGuid(),
                     vessel = e.vessel,
@@ -46,12 +46,12 @@ namespace VesselManager.Infra.Repository
                     location = e.location,
                     status = true
                 }).ToList();
-            _dataset.AddRange(equipaments);
+            _dataset.AddRange(equipments);
             await _context.SaveChangesAsync();
-            return equipaments;
+            return equipments;
         }
 
-        public async Task<bool> SearchForVessel(Equipament equipament)
+        public async Task<bool> SearchForVessel(Equipment equipament)
         {
             var result = await _dataset.FirstOrDefaultAsync(e =>
             e.code == equipament.code &&
@@ -60,7 +60,7 @@ namespace VesselManager.Infra.Repository
             return result == null;
         }
 
-        public async Task<List<Equipament>> Update(string vessel, List<Equipament> equipament)
+        public async Task<List<Equipment>> Update(string vessel, List<Equipment> equipament)
         {
             foreach (var item in equipament)
             {
