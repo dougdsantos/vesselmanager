@@ -9,5 +9,6 @@ namespace VesselManager.Domain.Interfaces
         Task<Equipament> InsertEquipamentAsync(Equipament equipament);
         Task<bool> SearchForVessel(Equipament equipament);
         Task<List<Equipament>> InsertEquipamentAsync(List<Equipament> equipament);
+        Task<List<Equipament>> GetEquipamentsByVesselCode(string code);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,20 @@ namespace VesselManager.Application.Controllers
             if (equipament.status == "Error")
             {
                 return BadRequest(equipament);
+            }
+
+            return Ok(equipament);
+        }
+
+        [HttpGet]
+        [Route("{vesselCode}/equipaments", Name = "GetEquipamentsWithVessel")]
+        public async Task<ActionResult> GetEquipament(string vesselCode, [FromServices] IEquipamentService equipamentService)
+        {
+            var equipament = await equipamentService.GetAllActiveEquipamentsByVessel(vesselCode);
+
+            if (equipament == null)
+            {
+                return BadRequest("Vessel don't have active equipaments");
             }
 
             return Ok(equipament);

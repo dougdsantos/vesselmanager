@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VesselManager.Domain.Entities;
 using VesselManager.Domain.Interfaces;
 using VesselManager.Infra.Context;
+using System.Linq;
 
 namespace VesselManager.Infra.Repository
 {
@@ -18,10 +20,7 @@ namespace VesselManager.Infra.Repository
         public async Task<Vessel> GetVesselByCode(string code)
         {
             var vessel = await _dataset.SingleOrDefaultAsync(v => v.code == code);
-            if (vessel == null)
-            {
-                throw new Exception("Vessel not registred");
-            }
+
             return vessel;
         }
     }

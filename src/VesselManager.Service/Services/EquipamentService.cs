@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VesselManager.Domain.DTO;
 using VesselManager.Domain.Entities;
 using VesselManager.Domain.Interfaces;
 using VesselManager.Domain.Interfaces.Services;
+using System.Linq;
 
 namespace VesselManager.Service.Services
 {
@@ -19,13 +21,33 @@ namespace VesselManager.Service.Services
             _vesselRepository = vesselRepository;
             _equipamentRepository = equipamentRepository;
         }
+
+        public async Task<List<Equipament>> GetAllActiveEquipamentsByVessel(string vesselCode)
+        {
+            var vessel = await _vesselRepository.GetVesselByCode(vesselCode.ToUpper());
+            if (vessel == null)
+            {
+                return null;
+            }
+
+            var equipamentsInVessel = await _equipamentRepository.GetEquipamentsByVesselCode(vesselCode);
+            return equipamentsInVessel.Where(e => e.status == true).ToList();
+        }
+
         public async Task<EquipamentRequestReturn> InsertEquipament(string vesselCode, Equipament equipament)
         {
+            var result = new EquipamentRequestReturn();
             var vessel = await _vesselRepository.GetVesselByCode(vesselCode);
+            if (vessel == null)
+            {
+                result.status = "Error";
+                result.message = "Vessel not Registred";
+                result.equipaments.Add(equipament.code);
+                return result;
+            }
             equipament.vessel = vessel;
 
             equipament.status = true;
-            var result = new EquipamentRequestReturn();
 
             if (await _equipamentRepository.SearchForVessel(equipament))
             {
