@@ -59,7 +59,7 @@ namespace VesselManager.Application.Controllers
         [Route("{vessel}/equipments", Name = "UpdateEquipmentsWithVessel")]
         public async Task<ActionResult> UpdateStatus(string vessel, [FromBody] List<Equipment> body, [FromServices] IEquipmentService equipmentService)
         {
-            var equipments = await equipmentService.DesactiveEquipments(vessel, body);
+            var equipments = await equipmentService.DeactivateEquipments(vessel, body);
 
             if (equipments.status == "Error")
             {

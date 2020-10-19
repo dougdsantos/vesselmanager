@@ -9,6 +9,6 @@ namespace VesselManager.Domain.Interfaces.Services
     {
         Task<EquipmentRequestReturn> InsertEquipment(string vesselCode, Equipment equipment);
         Task<List<Equipment>> GetAllActiveEquipmentsByVessel(string vesselCode);
-        Task<EquipmentRequestReturn> DesactiveEquipments(string vesselCode, List<Equipment> equipments);
+        Task<EquipmentRequestReturn> DeactivateEquipments(string vesselCode, List<Equipment> equipments);
     }
 }

@@ -22,7 +22,7 @@ namespace VesselManager.Service.Services
             _equipamentRepository = equipamentRepository;
         }
 
-        public async Task<EquipmentRequestReturn> DesactiveEquipments(string vesselCode, List<Equipment> equipments)
+        public async Task<EquipmentRequestReturn> DeactivateEquipments(string vesselCode, List<Equipment> equipments)
         {
             var result = new EquipmentRequestReturn();
             var equipamentsInVessel = await _equipamentRepository.GetEquipmentsByVesselCode(vesselCode.ToUpper());
